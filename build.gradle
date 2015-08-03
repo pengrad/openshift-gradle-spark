@@ -12,5 +12,6 @@ task stage(type: Copy) {
 stage.dependsOn build
 
 dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.12'
     compile 'com.sparkjava:spark-core:2.2'
 }
