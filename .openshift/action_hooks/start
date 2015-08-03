@@ -2,4 +2,9 @@
 # The logic to start up your application should be put in this
 # script. The application will work only if it binds to
 # $OPENSHIFT_DIY_IP:8080
-nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb $OPENSHIFT_DIY_IP $OPENSHIFT_REPO_DIR/diy |& /usr/bin/logshifter -tag diy &
+
+export JAVA_HOME=/etc/alternatives/java_sdk_1.8.0
+export PATH=${JAVA_HOME}/bin:${PATH}
+
+cd $OPENSHIFT_REPO_DIR
+java -cp build/staging:build/staging/* your.Main ${OPENSHIFT_DIY_IP} 8080 |& /usr/bin/logshifter &
